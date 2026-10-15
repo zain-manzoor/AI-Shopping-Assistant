@@ -1,0 +1,34 @@
+[project]
+name = "ai-shopping-assistant"
+version = "0.1.0"
+description = "A local, simulated AI shopping assistant"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "google-adk==2.11.0",
+    "google-genai==2.30.0",
+    "mcp==2.0.1",
+    "python-dotenv==1.2.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==9.1.1",
+    "ruff==0.15.22",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = ["gemini: optional tests that require a live Gemini API key"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+extend-exclude = [".uv-cache", "AI-Shopping-Assistant", "my-project", "shopping.db"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+quote-style = "double"
